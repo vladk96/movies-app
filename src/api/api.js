@@ -1,6 +1,7 @@
 const API_KEY = '31af08b6d9c68f14d9d5a7fc04d96517';
 const API_LINK = 'https://api.themoviedb.org/3/';
-const API_IMAGE_LINK = 'https://image.tmdb.org/t/p/original';
+
+export const API_IMAGE_LINK = 'https://image.tmdb.org/t/p/original';
 
 const getData = link =>
   fetch(link)
@@ -8,21 +9,22 @@ const getData = link =>
       if (result.ok) {
         return result.json();
       } else {
-        throw Error(`Request rejected with status ${result.status}`);
+        throw new Error(result.statusText);
       }
     })
-    .then(result => {
-      const changedResults = result.results.map(movie => ({
-        ...movie,
-        poster_path: `${API_IMAGE_LINK}${movie.poster_path}`,
-      }));
+    .catch(error => console.error('Error:', error));
 
-      return {
-        ...result,
-        results: changedResults,
-      };
-    })
-    .catch(console.error);
+const fetchMovieInfo = movieId => {
+  const apiLink = `${API_LINK}movie/${movieId}?api_key=${API_KEY}`;
+
+  return getData(apiLink);
+};
+
+const fetchMovieCrew = movieId => {
+  const apiLink = `${API_LINK}movie/${movieId}/credits?api_key=${API_KEY}`;
+
+  return getData(apiLink);
+};
 
 export const fetchMovies = (pageNumber = 0) => {
   let apiLink = `${API_LINK}trending/movie/week?api_key=${API_KEY}`;
@@ -30,10 +32,10 @@ export const fetchMovies = (pageNumber = 0) => {
   if (pageNumber !== 0) {
     apiLink += `&page=${pageNumber}`;
   }
-  console.log(apiLink);
+
   return getData(apiLink);
 };
-// // Description about movie
-// // change movieId = 299537;
-// const descOfMovie =
-//   'https://api.themoviedb.org/3/movie/299537?api_key=31af08b6d9c68f14d9d5a7fc04d96517&language=en-US';
+
+export const fetchMovie = movieId => {
+  return Promise.all([fetchMovieInfo(movieId), fetchMovieCrew(movieId)]);
+};

@@ -24,3 +24,13 @@ export const clearMovies = () => ({
   type: CLEAR_MOVIES,
   payload: null,
 });
+
+export const loadMoreMovies = currentPage => {
+  const nextPage = currentPage + 1;
+  const request = fetchMovies(nextPage);
+
+  return {
+    type: LOAD_MORE_MOVIES,
+    payload: request,
+  };
+};

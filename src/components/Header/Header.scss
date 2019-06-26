@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+
+  @media screen and (max-width: 351px) {
+    justify-content: center;
+  }
+}
+
+.page-logo,
+.api-logo {
+  margin: 15px 50px;
+}
+
+.page-logo {
+  font-size: 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #222;
+  transition: color .3s linear;
+}
+
+.page-logo:hover {
+  color: #999;
+}
+
+.api-logo {
+  width: 70px;
+}
+
+.api-logo__image {
+  display: block;
+  width: 100%;
+}

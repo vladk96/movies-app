@@ -1,0 +1,41 @@
+.card {
+  width: 270px;
+  height: 90%;
+  margin: 25px 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: background-color .3s linear,;
+}
+
+.card:hover {
+  background-color: #f8f8f8;
+}
+
+.card__poster {
+  display: inline-block;
+  max-width: 100%;
+}
+
+.card__title {
+  margin: 10px 0;
+  padding-right: 50px;
+  font-weight: 400;
+}
+
+.card__desc {
+  position: relative;
+  padding: 0 5px 15px;
+}
+
+.card__vote {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  display: inline-block;
+  padding: 0 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #607d8b;
+  border-radius: 2px;
+}

@@ -1,16 +1,12 @@
 import React from 'react';
 
-import Loader from 'react-loader-spinner';
+import Spinner from '../Spinner/Spinner';
 import MovieCard from '../MovieCard/MovieCard';
 import LoadMoreButton from '../LoadMoreButton/LoadMoreButton';
 
-import './Home.scss';
+import { API_IMAGE_LINK } from '../../api/api';
 
-const loader = (
-  <div className="loader-container">
-    <Loader type="ThreeDots" color="#999" height="100" width="100" />
-  </div>
-);
+import './Home.scss';
 
 const Home = ({
   isLoading,
@@ -25,14 +21,14 @@ const Home = ({
         {movies.map((movie, index) => (
           <MovieCard
             key={index}
-            imageSrc={movie.poster_path}
+            imageSrc={API_IMAGE_LINK + movie.poster_path}
             title={movie.title}
             vote={movie.vote_average}
             movieId={movie.id}
           />
         ))}
       </div>
-      {isLoading ? loader : null}
+      {isLoading ? <Spinner /> : null}
       <div className="home__btn">
         {currentPage < totalPages && (
           <LoadMoreButton handleClick={loadMoreMovies} />

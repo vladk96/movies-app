@@ -7,7 +7,7 @@ import apiLogo from '../../assets/themoviedb-logo.svg';
 const Header = () => (
   <header className="header">
     <Link to="/" className="page-logo">
-      Home page
+      Movie app
     </Link>
     <a className="api-logo" href="https://www.themoviedb.org/documentation/api">
       <img className="api-logo__image" src={apiLogo} alt="api-logo" />

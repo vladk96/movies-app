@@ -1,12 +1,13 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './MovieCard.scss';
 
 const MovieCard = ({ imageSrc, title, vote, movieId }) => {
   return (
-    <Link to={{ pathname: `/${movieId}` }}>
+    <Link to={`/${movieId}`}>
       <figure className="card">
         <img className="card__poster" src={imageSrc} alt="poster" />
         <figcaption className="card__desc">
@@ -16,6 +17,10 @@ const MovieCard = ({ imageSrc, title, vote, movieId }) => {
       </figure>
     </Link>
   );
+};
+
+MovieCard.propTypes = {
+  movieId: PropTypes.number,
 };
 
 export default MovieCard;

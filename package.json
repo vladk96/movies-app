@@ -1,6 +1,7 @@
 {
   "name": "movies-app",
   "version": "0.1.0",
+  "homepage" : "http://myname.github.io/movies-app",
   "private": true,
   "dependencies": {
     "node-sass": "^4.12.0",
